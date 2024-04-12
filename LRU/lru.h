@@ -21,19 +21,10 @@ int division_hash(LRUCache *obj,int key){
     return key % obj->capacity;
 }
 
-int ilog32(uint32_t v)
-{
-    return (31 - __builtin_clz(v));
-}
-
 int multiplication_hash(LRUCache *obj,int key){
     double A = (sqrt(5) - 1) / 2;
     double s = key * A;
     double x = s - floor(s);
-    // uint32_t p = ilog32((uint32_t)obj->capacity);
-    // uint32_t s = 13 << (32-5);
-    
-    // uint32_t x = key * s;
     return floor(obj->capacity * x);
 }
 

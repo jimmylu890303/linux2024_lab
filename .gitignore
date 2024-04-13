@@ -1,2 +1,3 @@
 ./LRU/*.o
 ./LRU/*.png  
+/ceil_log2/*.o

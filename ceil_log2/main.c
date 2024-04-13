@@ -6,7 +6,7 @@ int ceil_ilog2(uint32_t x)
 {
     uint32_t r, shift;
 
-    x --;
+    x -= (!!x);
     r = (x > 0xFFFF) << 4;                                                                                                                                    
     x >>= r;
     shift = (x > 0xFF) << 3;
@@ -17,7 +17,8 @@ int ceil_ilog2(uint32_t x)
     r |= shift;
     shift = (x > 0x3) << 1;
     x >>= shift;
-    return (r | shift | x > 1)+1;       
+    x = !(r | shift | x > 0) ? 0 : (r | shift | x > 1)+1;
+    return x;       
 }
 int main(int argc, char *argv[])
 {
